@@ -80,28 +80,40 @@ static NSString *const XMLDictionaryAttributePrefix = @"_";
 
 @interface NSDictionary (XMLDictionary)
 
-+ (NSDictionary *)dictionaryWithXMLData:(NSData *)data;
-+ (NSDictionary *)dictionaryWithXMLString:(NSString *)string;
-+ (NSDictionary *)dictionaryWithXMLFile:(NSString *)path;
++ (NSDictionary *)xd_dictionaryWithXMLData:(NSData *)data;
++ (NSDictionary *)xd_dictionaryWithXMLString:(NSString *)string;
++ (NSDictionary *)xd_dictionaryWithXMLFile:(NSString *)path;
 
-- (NSDictionary *)attributes;
-- (NSDictionary *)childNodes;
-- (NSArray *)comments;
-- (NSString *)nodeName;
-- (NSString *)innerText;
-- (NSString *)innerXML;
-- (NSString *)XMLString;
+- (NSDictionary *)xd_attributes;
+- (NSDictionary *)xd_childNodes;
+- (NSArray *)xd_comments;
+- (NSString *)xd_nodeName;
+- (NSString *)xd_innerText;
+- (NSString *)xd_innerXML;
+- (NSString *)xd_XMLString;
 
-- (NSArray *)arrayValueForKeyPath:(NSString *)keyPath;
-- (NSString *)stringValueForKeyPath:(NSString *)keyPath;
-- (NSDictionary *)dictionaryValueForKeyPath:(NSString *)keyPath;
+- (NSArray *)xd_arrayValueForKeyPath:(NSString *)keyPath;
+- (NSString *)xd_stringValueForKeyPath:(NSString *)keyPath;
+- (NSDictionary *)xd_dictionaryValueForKeyPath:(NSString *)keyPath;
 
 @end
 
 
 @interface NSString (XMLDictionary)
 
-- (NSString *)XMLEncodedString;
+- (NSString *)xd_XMLEncodedString;
+
+@end
+
+@interface NSMutableDictionary (XMLDictionary)
+
+//- (void)xd_setName:(NSString *)name;
+- (void)xd_addAttribute:(NSString *)value withName:(NSString *)name;
+- (void)xd_setText:(NSString *)text;
+//- (void)xd_addElement:(id)element withName:(NSString *)name;
+
++ (NSMutableDictionary *)xd_rootDictionaryWithName:(NSString *)name andBlock:(void(^)(NSMutableDictionary *root))block;
+- (void)xd_addElementWithName:(NSString *)name text:(NSString *)text andBlock:(void(^)(NSMutableDictionary *element))block;
 
 @end
 
