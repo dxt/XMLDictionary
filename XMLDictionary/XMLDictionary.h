@@ -110,10 +110,11 @@ static NSString *const XMLDictionaryAttributePrefix = @"_";
 //- (void)xd_setName:(NSString *)name;
 - (void)xd_addAttribute:(NSString *)value withName:(NSString *)name;
 - (void)xd_setText:(NSString *)text;
-//- (void)xd_addElement:(id)element withName:(NSString *)name;
+- (void)xd_addElement:(id)element withName:(NSString *)name;
 
 + (NSMutableDictionary *)xd_rootDictionaryWithName:(NSString *)name andBlock:(void(^)(NSMutableDictionary *root))block;
 - (void)xd_addElementWithName:(NSString *)name text:(NSString *)text andBlock:(void(^)(NSMutableDictionary *element))block;
+- (void)xd_addElementWithName:(NSString *)name text:(NSString *)text xmlnsAttribute:(NSString *)xmlnsAttribute andBlock:(void(^)(NSMutableDictionary *element))block;
 
 @end
 

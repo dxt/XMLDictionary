@@ -566,6 +566,14 @@
     }
 }
 
+- (void)xd_addElementWithName:(NSString *)name text:(NSString *)text xmlnsAttribute:(NSString *)xmlnsAttribute andBlock:(void(^)(NSMutableDictionary *element))block{
+    [self xd_addElementWithName:name text:text andBlock:^(NSMutableDictionary *element) {
+        [element xd_addAttribute:xmlnsAttribute withName:@"xmlns"];
+        if(block){
+            block(element);
+        }
+    }];
+}
 
 
 
